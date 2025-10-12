@@ -21,7 +21,10 @@ def create_number_list(start, end):
     """
     # TODO: Implement this function
     # Hint: Use range() and convert to list
-    pass
+    result = []
+    for i in range(start, end + 1):
+        result.append(i)
+    return result
 
 
 def filter_even_numbers(numbers):
@@ -40,7 +43,11 @@ def filter_even_numbers(numbers):
     """
     # TODO: Implement this function
     # You can use a loop or list comprehension
-    pass
+    even_list = []
+    for num in numbers:
+        if num % 2 == 0:
+            even_list.append(num)
+    return even_list
 
 
 def square_numbers(numbers):
@@ -59,7 +66,10 @@ def square_numbers(numbers):
     """
     # TODO: Implement this function
     # Hint: Try a list comprehension!
-    pass
+    squared = []
+    for num in numbers:
+        squared.append(num * num)
+    return squared
 
 
 def find_max_min(numbers):
@@ -78,8 +88,14 @@ def find_max_min(numbers):
     """
     # TODO: Implement this function
     # You can use max() and min() built-in functions
-    pass
-
+    max_value = numbers[0]
+    min_value = numbers[0]
+    for num in numbers:
+        if num > max_value:
+            max_value = num
+        if num < min_value:
+            min_value = num
+    return (max_value, min_value)
 
 def remove_duplicates(items):
     """
@@ -98,7 +114,11 @@ def remove_duplicates(items):
     # TODO: Implement this function
     # Hint: You can use a loop and check if item is already in result list
     # Or convert to set and back to list (but this doesn't preserve order)
-    pass
+    result = []
+    for item in items:
+        if item not in result:
+            result.append(item)
+    return result
 
 
 def merge_lists(list1, list2):
@@ -121,7 +141,17 @@ def merge_lists(list1, list2):
     """
     # TODO: Implement this function
     # Hint: Use a loop with index, handle different lengths
-    pass
+    merged = []
+    i = 0
+    j = 0
+    while i < len(list1) or j < len(list2):
+        if i < len(list1):
+            merged.append(list1[i])
+            i += 1
+        if j < len(list2):
+            merged.append(list2[j])
+            j += 1
+    return merged
 
 
 def list_statistics(numbers):
@@ -143,7 +173,26 @@ def list_statistics(numbers):
 
     # TODO: Implement this function
     # Calculate and return a dictionary with the statistics
-    pass
+    if len(numbers) == 0:
+        return None
+
+    total = 0
+    count = 0
+    for n in numbers:
+        total += n
+        count += 1
+
+    max_value, min_value = find_max_min(numbers)
+    average = total / count
+
+    stats = {
+        'sum': total,
+        'average': average,
+        'count': count,
+        'max': max_value,
+        'min': min_value
+    }
+    return stats
 
 
 def chunk_list(items, chunk_size):
@@ -163,7 +212,13 @@ def chunk_list(items, chunk_size):
     """
     # TODO: Implement this function
     # Hint: Use list slicing in a loop
-    pass
+    result = []
+    i = 0
+    while i < len(items):
+        chunk = items[i:i + chunk_size]
+        result.append(chunk)
+        i += chunk_size
+    return result
 
 
 # Test cases
